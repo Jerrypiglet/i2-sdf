@@ -20,6 +20,7 @@
 ```
 conda env create -f environment.yml
 conda activate i2sdf
+[Rui] conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
 ```
 
 ### Data preparation
@@ -36,6 +37,11 @@ We provide a high-quality synthetic indoor scene multi-view dataset, with ground
 
 ```
 python main_recon.py --conf config/<config_file>.yml --scan_id <scan_id> -d <gpu_id> -v <version>
+```
+
+[Rui]
+```
+python data/normalize_cameras.py -i data/synthetic/scan332/cameras.npz -o data/synthetic/scan332/cameras_normalize.npz
 ```
 
 Note: `config/synthetic.yml` doesn't contain light mask network, while `config/synthetic_light.yml` contains.
